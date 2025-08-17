@@ -17,6 +17,18 @@
   <script src="js/swiper.min.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/lib.js"></script>
+
+  <style>
+    .section-swiper .section:nth-child(1) {
+      background: url(images/main_visual_bg.png) no-repeat center center / cover; display: flex; align-items: center; justify-content: center;
+    }
+    .section-swiper .section:nth-child(2) {
+      display: flex; align-items: center; justify-content: center;
+    }
+    .section-swiper .section:nth-child(3) {
+      background: url(images/main_lastsection_bg.png) no-repeat center center /cover; display: flex; align-items: center; justify-content: center; flex-direction: column; position: relative; padding-bottom: 340px;
+    }
+  </style>
 </head>
 
 <body>
@@ -90,27 +102,30 @@
     <div class="swiper section-swiper" id="contents">
       <div class="swiper-wrapper">
         <!-- section-1 -->
-        <section class="swiper-slide"
-          style="background: url(images/main_visual_bg.png) no-repeat center center / cover; display: flex; align-items: center; justify-content: center;">
+        <section class="swiper-slide section"
+          style="">
           <div class="container">
             <img src="images/main_img_01.png" alt="">
-            <img src="images/main_img_01_2.png" alt="" style="position: absolute; bottom: 10rem; left: 50%; transform: translateX(-50%);">
+            <img src="images/main_img_01_2.png" alt=""
+              style="position: absolute; bottom: 10rem; left: 50%; transform: translateX(-50%);">
           </div>
         </section>
         <!-- section-2 -->
-        <section class="swiper-slide section" style=" display: flex; align-items: center; justify-content: center;">
+        <section class="swiper-slide section" style=" ">
           <div class="container">
             <img src="images/main_img_02.png" alt="">
           </div>
           <!-- // container -->
         </section>
-        <section class="swiper-slide"
-          style="background: url(images/main_lastsection_bg.png) no-repeat center center /cover; display: flex; align-items: center; justify-content: center; flex-direction: column; position: relative; padding-bottom: 340px;">
+        <section class="swiper-slide section"
+          style="">
+          <div class="container">
             <div>
               <img src="images/main_img_03.png" alt="">
-          </div>
-          <div class="footer" style="position:absolute; bottom:0; left: 0; text-align: center;">
-            <img src="images/main_img_footer.png" alt="" style="">
+            </div>
+            <div class="footer" style="position:absolute; bottom:0; left: 0; text-align: center;">
+              <img src="images/main_img_footer.png" alt="" style="">
+            </div>
           </div>
         </section>
       </div>
@@ -118,18 +133,19 @@
       <div class="sectionSwiper-pagination"></div>
     </div>
     <!-- // section-swiper -->
-     <button type="button" class="recentContents-btn"  onclick="recentContents.open()"><span class="blind">최근본 컨텐츠 리스트</span><img src="images/main_viewList_btn.svg" alt=""></button>
-     <div class="recentContents-list">
-      <img src="images/main_img_04.png" alt=""  onclick="recentContents.close()">
-     </div>
+    <button type="button" class="recentContents-btn" onclick="recentContents.open()"><span class="blind">최근본 컨텐츠
+        리스트</span><img src="images/main_viewList_btn.svg" alt=""></button>
+    <div class="recentContents-list">
+      <img src="images/main_img_04.png" alt="" onclick="recentContents.close()">
+    </div>
   </div>
   <!-- // wrap -->
   <script>
     const recentContents = {
-      open: function() {
+      open: function () {
         document.querySelector('.recentContents-list').classList.add('active');
       },
-      close: function() {
+      close: function () {
         document.querySelector('.recentContents-list').classList.remove('active');
       }
     }

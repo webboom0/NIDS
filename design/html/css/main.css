@@ -52,3 +52,13 @@ body.hdn-scroll {
 .main-top .sectionSwiper-pagination>*.swiper-pagination-bullet-active{
   background-color: #fff;
 }
+
+@media (min-height:890px) {
+  .section-swiper.fix .section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+}
