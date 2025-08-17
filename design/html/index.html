@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하림중앙연구소</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="keywords" content="하림중앙연구소, 기업소개, 의뢰신청">
+  <meta name="description" content="하림중앙연구소">
+  <link rel="shortcut icon" href="images/favicon.ico">
+  <!-- css -->
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="stylesheet" href="css/main.css">
+  <!-- js -->
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/lib.js"></script>
+</head>
+
+<body>
+  <!-- skip -->
+  <div id="skipNav">
+    <ul>
+      <li><a href="#contents">본문 바로가기</a></li>
+      <li><a href="#gnb">주메뉴 바로가기</a></li>
+    </ul>
+  </div>
+  <div class="wrap">
+    <!--header  -->
+    <header class="header">
+      <div class="container">
+        <h1 class="logo"><a href="#"><span class="blind">천하제일사료</span></a></h1>
+        <!-- gnb -->
+        <nav class="gnb" id="gnb">
+          <button type="button" class="sideMenuCloseBtn"><i class="ri-close-fill"></i><span
+              class="blind">메뉴닫기</span></button>
+          <ul>
+            <li class="depth-1">
+              <a href="#"><span>센터소개 </span></a>
+              <ul class="depth-2">
+              </ul>
+            </li>
+            <li class="depth-1">
+              <a href="#"><span>알기쉬운 MDR</span></a>
+              <ul class="depth-2">
+              </ul>
+            </li>
+            <li class="depth-1">
+              <a href="#"><span>한 눈에 보는 MDR</span></a>
+              <ul class="depth-2">
+              </ul>
+            </li>
+            <li class="depth-1">
+              <a href="#"><span>함께 MDR</span></a>
+              <ul class="depth-2">
+              </ul>
+            </li>
+            <li class="depth-1">
+              <a href="#"><span>MDR 자료관</span></a>
+              <ul class="depth-2">
+              </ul>
+            </li>
+            <li class="depth-1">
+              <a href="#"><span>알림/홍보</span></a>
+              <ul class="depth-2">
+              </ul>
+            </li>
+          </ul>
+          <button type="button" class="totalMenuCloseBtn" onclick="totalMenu.close()"><i class="ri-close-fill"></i><span
+              class="blind">전체메뉴닫기</span></button>
+        </nav>
+        <div class="etcMenu">
+          <!--
+          <a href="login.html"><i class="ri-login-box-line toggle"></i><span>로그인</span></a>
+          <a href="#"><i class="ri-user-add-line toggle"></i><span>회원가입</span></a>
+          <button type="button" class="totalMenuBtn" onclick="totalMenu.open()"><i class="ri-menu-line"></i><span
+              class="blind">사이트맵</span></button>
+          -->
+          <!-- (모바일) 사이트메뉴 버튼 
+          <button type="button" class="sideMenuBtn" data-modalClickable='false' aria-label="메뉴 열기"
+            aria-expanded="false"><i class="ri-menu-line"></i><span class="blind">메뉴열기</span></button>
+
+          -->
+        </div>
+      </div>
+    </header>
+    <!-- section -->
+    <div class="swiper section-swiper" id="contents">
+      <div class="swiper-wrapper">
+        <!-- section-1 -->
+        <section class="swiper-slide"
+          style="background: url(images/main_visual_bg.png) no-repeat center center / cover; display: flex; align-items: center; justify-content: center;">
+          <div class="container">
+            <img src="images/main_img_01.png" alt="">
+          </div>
+        </section>
+        <!-- section-2 -->
+        <section class="swiper-slide section" style=" display: flex; align-items: center; justify-content: center;">
+          <div class="container">
+            <img src="images/main_img_02.png" alt="">
+          </div>
+          <!-- // container -->
+        </section>
+        <section class="swiper-slide"
+          style="background: url(images/main_lastsection_bg.png) no-repeat center center /cover; display: flex; align-items: center; justify-content: center; flex-direction: column; position: relative; padding-bottom: 340px;">
+            <div>
+              <img src="images/main_img_03.png" alt="">
+          </div>
+          <div class="footer" style="position:absolute; bottom:0; left: 0; text-align: center;">
+            <img src="images/main_img_footer.png" alt="" style="">
+          </div>
+        </section>
+      </div>
+      <!-- // swiper-wrapper -->
+      <div class="sectionSwiper-pagination"></div>
+    </div>
+    <!-- // section-swiper -->
+     <button type="button" class="recentContents-btn"  onclick="recentContents.open()"><span class="blind">최근본 컨텐츠 리스트</span><img src="images/main_viewList_btn.svg" alt=""></button>
+     <div class="recentContents-list">
+      <img src="images/main_img_04.png" alt=""  onclick="recentContents.close()">
+     </div>
+  </div>
+  <!-- // wrap -->
+  <script>
+    const recentContents = {
+      open: function() {
+        document.querySelector('.recentContents-list').classList.add('active');
+      },
+      close: function() {
+        document.querySelector('.recentContents-list').classList.remove('active');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      let sectionSwiper;
+
+      function swiperResponsive() {
+        const body = document.body;
+        const wrap = document.querySelector('.wrap');
+        const footer = document.querySelector('.footer');
+        const visualSection = document.querySelector('.visual-section');
+        const sectionSwiperElement = document.querySelector('.section-swiper');
+
+        if (window.matchMedia("screen and (max-height: 1020px)").matches || window.matchMedia("screen and (max-width: 1400px)").matches) {
+          sectionSwiperElement.classList.remove("swiper");
+          sectionSwiperElement.children[0].classList.remove("swiper-wrapper");
+          Array.from(sectionSwiperElement.children[0].children).forEach(child => child.classList.remove("swiper-slide"));
+          body.classList.remove("hdn-scroll");
+          sectionSwiperElement.classList.add("fix");
+          wrap.classList.add("main-top");
+          if (sectionSwiperCheck()) sectionSwiper.destroy(true, true);
+          window.addEventListener("scroll", function (event) {
+            console.log(document.querySelector("html").scrollTop)
+            if (document.querySelector("html").scrollTop > 100) {
+              wrap.classList.remove("main-top");
+            } else {
+              wrap.classList.add("main-top");
+            }
+          })
+        } else {
+          body.classList.add("hdn-scroll");
+          wrap.classList.add("main-top");
+          sectionSwiperElement.classList.remove("fix");
+          if (!sectionSwiperCheck()) {
+            sectionSwiperElement.classList.add("swiper");
+            sectionSwiperElement.children[0].classList.add("swiper-wrapper");
+            Array.from(sectionSwiperElement.children[0].children).forEach(child => child.classList.add("swiper-slide"));
+            sectionSwiper = new Swiper(".section-swiper", {
+              direction: "vertical",
+              slidesPerView: 1,
+              spaceBetween: 0,
+              pagination: {
+                el: ".sectionSwiper-pagination",
+              },
+              mousewheel: true,
+              allowTouchMove: false,
+              speed: 1000,
+              on: {
+                slideChangeTransitionStart: function (e) {
+                  if (e.activeIndex == 0) {
+                    wrap.classList.add("main-top");
+                  } else {
+                    wrap.classList.remove("main-top");
+                  }
+                },
+              }
+            });
+          }
+        }
+      }
+
+      const visualSwiper = new Swiper(".visual-swiper", {
+        effect: "fade",
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false
+        },
+        navigation: {
+          nextEl: ".visual-button-next",
+          prevEl: ".visual-button-prev",
+        },
+      });
+
+      function sectionSwiperCheck() {
+        if (!!sectionSwiper) {
+          return !sectionSwiper.destroyed;
+        } else {
+          return false;
+        }
+      }
+
+      swiperResponsive();
+      window.addEventListener('resize', swiperResponsive);
+    });
+
+    // 로컬 스토리지에서 팝업 정보를 가져옴
+    function cookieCheck(e) {
+      if (e.checked === true) {
+        // 동의시 로컬 스토리지에 저장
+        localStorage.setItem("popupClose", true);
+      } else {
+        localStorage.removeItem("popupClose");
+      }
+    }
+
+  </script>
+</body>
+
+</html>
