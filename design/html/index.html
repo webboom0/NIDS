@@ -147,7 +147,7 @@
      .mainLink {
       position: fixed;
       bottom: 20px;
-      keft: 20px;
+      left: 20px;
       z-index: 5;
       background: #ff0000;
       font-size: 1em;
@@ -181,7 +181,7 @@
         const visualSection = document.querySelector('.visual-section');
         const sectionSwiperElement = document.querySelector('.section-swiper');
 
-        if (window.matchMedia("screen and (max-height: 1020px)").matches || window.matchMedia("screen and (max-width: 1400px)").matches) {
+        if (window.matchMedia("screen and (max-height: 900px)").matches || window.matchMedia("screen and (max-width: 1400px)").matches) {
           sectionSwiperElement.classList.remove("swiper");
           sectionSwiperElement.children[0].classList.remove("swiper-wrapper");
           Array.from(sectionSwiperElement.children[0].children).forEach(child => child.classList.remove("swiper-slide"));
