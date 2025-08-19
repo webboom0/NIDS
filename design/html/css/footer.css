@@ -112,9 +112,21 @@
   }
 
   .footer-top .link-group {
-    flex-direction: column;
-    gap: 0;
     padding-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+  }
+
+  .footer-top .link-group a {
+    border:solid 1px var(--color-border);
+    padding: 1rem;
+    border-radius: .5rem;
+    justify-content: center;
+  }
+
+  .footer-top .link-group a::before{
+    display: none;
   }
 
   .footer-top .sns {
@@ -123,16 +135,6 @@
     left: 20px;
     background-color: #fff;
     z-index: 1;
-  }
-
-  .footer-top a {
-    padding: 1rem;
-    border-bottom: dashed 1px rgba(0, 0, 0, .2);
-    text-align: center;
-  }
-
-  .footer-top a:last-child {
-    border-bottom: none;
   }
 
   .footer-bottom ul {
