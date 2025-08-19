@@ -8,7 +8,7 @@ const gnb = {
   dep2WdArr: [],
   dep2HeightArr: [],
   gnbWidth: 1100,
-  init: function() {
+  init: function () {
     const gnbElement = document.querySelector(this.gnbEl);
 
     // gnb 요소 전체 마우스 오버 이벤트
@@ -23,16 +23,29 @@ const gnb = {
     // 1차메뉴 focus 이벤트
     gnbElement.querySelectorAll(gnb.depth[0] + " > a").forEach((el) => {
       el.addEventListener("focus", event_gnb_mouseenter);
+      el.addEventListener("mouseenter", event_gnb_dep1_mouseenter);
     });
     // 메뉴 링크외 링크요소 focus 이벤트
     document.querySelectorAll("a:not(" + this.gnbEl + " a)").forEach((el) => {
       el.addEventListener("focus", event_gnb_mouseleave);
     });
-
+    // 1차메뉴 마우스 오버 이벤트
+    function event_gnb_dep1_mouseenter(e) {
+      if (gnb.mode === "pc") {
+        const activeLi = gnbElement.querySelector(".depth-1.active");
+        if (activeLi) activeLi.classList.remove("active");
+        
+        const targetLi = e.currentTarget.closest("li");
+        if (targetLi) {
+          targetLi.classList.add("active");
+        }
+      }
+    }
     // gnb 요소 전체 마우스 오버시 .active 추가
-    function event_gnb_mouseenter() {
+    function event_gnb_mouseenter(e) {
       if (gnb.mode === "pc") {
         gnbElement.classList.add("active");
+        event_gnb_dep1_mouseenter(e)
         document.querySelector(".header").classList.add("gnbActive");
         if (!document.querySelector("header").classList.contains("allMenuActive"))
           document.body.classList.add("scroll-hdn");
@@ -42,6 +55,9 @@ const gnb = {
     // gnb 요소 전체 마우스 아웃시 .active 삭제
     function event_gnb_mouseleave() {
       if (gnb.mode === "pc") {
+        const activeLi = gnbElement.querySelector(".depth-1.active");
+        if (activeLi) activeLi.classList.remove("active");
+
         gnbElement.classList.remove("active");
         document.querySelector(".header").classList.remove("gnbActive");
         if (!document.querySelector("header").classList.contains("allMenuActive"))
@@ -52,14 +68,20 @@ const gnb = {
     // 2차 메뉴 마우스 오버 이벤트
     function evetn_dep2_mouseenter(e) {
       if (gnb.mode === "pc") {
-        e.currentTarget.closest("li").classList.add("active");
+        const targetLi = e.currentTarget.closest("li");
+        if (targetLi) {
+          targetLi.classList.add("active");
+        }
       }
     }
 
     // 2차 메뉴 마우스 아웃 이벤트
     function event_dep2_mouseleave(e) {
       if (gnb.mode === "pc") {
-        e.currentTarget.closest("li").classList.remove("active");
+        const targetLi = e.currentTarget.closest("li");
+        if (targetLi) {
+          targetLi.classList.remove("active");
+        }
       }
     }
 
@@ -77,17 +99,17 @@ const gnb = {
           if (el != dep1) {
             if (el.classList.contains("open")) {
               // 오픈되어있는 메뉴 비활성화
-              slideUp(el.querySelector(gnb.depth[1]));
+              slideUp(el.querySelector(".sub-group"));
               el.classList.remove("open");
             }
           } else {
             if (el.classList.contains("open")) {
               // 선택한 메뉴 비활성화
-              slideUp(el.querySelector(gnb.depth[1]));
+              slideUp(el.querySelector(".sub-group"));
               el.classList.remove("open");
             } else {
               // 선택한 메뉴 활성화
-              slideDown(dep1.querySelector(gnb.depth[1]));
+              slideDown(dep1.querySelector(".sub-group"));
               dep1.classList.add("open");
             }
           }
@@ -96,7 +118,7 @@ const gnb = {
     }
     //  사이드 메뉴 닫기
     document.querySelectorAll(".sideMenuCloseBtn").forEach((btn) => {
-      btn.addEventListener("click", function() {
+      btn.addEventListener("click", function () {
         gnb.close();
       });
     });
@@ -157,44 +179,16 @@ const gnb = {
       }, duration);
     }
   },
-  close: function() {
+  close: function () {
     document.body.classList.remove("sideMenuOpen");
     document.querySelector(".modal-box").remove();
   },
-  set: function() {
+  set: function () {
     const gnbElement = document.querySelector(this.gnbEl);
     // 2차메뉴 배경 요소 추가
-    if (!gnbElement.querySelector(".panel")) {
-      const panel = document.createElement("div");
-      panel.className = "panel";
-      gnbElement.appendChild(panel);
-    }
-    const length = gnbElement.querySelectorAll(gnb.depth[1]).length;
-    const wd = gnb.gnbWidth / length;
-    // 2차메뉴 max 높이,가로 체크 후 위치, 사이즈 조절
-    gnbElement.querySelectorAll(gnb.depth[1]).forEach((el, i) => {
-      gnb.dep2HeightArr.push(el.offsetHeight);
-    });
-    gnb.maxHeight = Math.max(...gnb.dep2HeightArr);
-    document.querySelector(".totalMenuCloseBtn").style.top = `${
-      gnb.maxHeight + 120
-    }px`;
-
-    // 2차메뉴 스타일 지정
-    depthStyle();
-
-    function depthStyle() {
-      // 2차메뉴 배경 요소 높이 설정
-      gnbElement.querySelector(".panel").style.height = gnb.maxHeight + "px";
-
-
-      // 2차메뉴 가로/세로사이즈, 위치 조절
-      gnbElement.querySelectorAll(gnb.depth[1]).forEach((el) => {
-        el.style.height = gnb.maxHeight + "px";
-      });
-    }
+   
   },
-  reset: function() {
+  reset: function () {
     const gnbElement = document.querySelector(this.gnbEl);
     gnbElement
       .querySelectorAll(gnb.depth[0])
@@ -211,7 +205,7 @@ const gnb = {
       .forEach((el) => el.classList.remove("toggle"));
     document.querySelectorAll("#gnb .etcMenu").forEach((el) => el.remove());
   },
-  pcReset: function() {
+  pcReset: function () {
     const gnbElement = document.querySelector("#gnb");
     gnbElement
       .querySelectorAll(gnb.depth[0])
@@ -225,11 +219,11 @@ const gnb = {
 
     gnbElement.classList.remove("active");
   },
-  addModal: function(contain) {
+  addModal: function (contain) {
     if (document.querySelectorAll(".modal-box").length <= 0) {
       const modal = document.createElement("div");
       modal.classList.add("modal-box")
-      modal.addEventListener("click", function() {
+      modal.addEventListener("click", function () {
         gnb.close();
       });
       document.querySelector(contain).append(modal);
@@ -237,13 +231,13 @@ const gnb = {
   }
 };
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // gnb 메뉴 활성화
   gnb.init();
 
   // 사이드 메뉴 활성화
   document.querySelectorAll(".sideMenuBtn").forEach((btn) => {
-    btn.addEventListener("click", function(e) {
+    btn.addEventListener("click", function (e) {
       document.body.classList.add("sideMenuOpen");
       gnb.addModal(".header");
       document.querySelectorAll("#gnb .etcMenu").forEach((el) => el.remove());
@@ -257,7 +251,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   windowRsize();
   // window resize 해상도가 변경될 때
-  window.addEventListener("resize", function() {
+  window.addEventListener("resize", function () {
     windowRsize();
   });
 

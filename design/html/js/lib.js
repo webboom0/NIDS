@@ -1,5 +1,5 @@
 /****** [ 상단이동] ******/
-const moveTop = function() {
+const moveTop = function () {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
@@ -10,27 +10,27 @@ const selectForm = {
   selected: ".selected",
   option: ".option",
   item: ".opt-item",
-  init: function() {
+  init: function () {
     document.querySelectorAll(this.wrap).forEach((wrap) => {
-      wrap.querySelector(this.selected).addEventListener("click", function() {
+      wrap.querySelector(this.selected).addEventListener("click", function () {
         selectForm.inactive();
         wrap.classList.toggle("active");
       });
 
       wrap.querySelectorAll(this.item).forEach((item) => {
-        item.addEventListener("click", function() {
+        item.addEventListener("click", function () {
           selectForm.optionSelect(item);
         });
       });
     });
 
-    document.addEventListener("click", function(e) {
+    document.addEventListener("click", function (e) {
       if (!e.target.closest(selectForm.wrap)) {
         selectForm.inactive();
       }
     });
   },
-  inactive: function(wrap) {
+  inactive: function (wrap) {
     if (wrap) {
       wrap.classList.remove("active");
     } else {
@@ -39,7 +39,7 @@ const selectForm = {
       });
     }
   },
-  optionSelect: function(item) {
+  optionSelect: function (item) {
     const selectedText = item.getAttribute("data-value");
     const wrap = item.closest(this.wrap);
     const selectedElement = wrap.querySelector(this.selected);
@@ -64,7 +64,7 @@ const dialog = {
     document.querySelector(target).classList.add("open");
     document.querySelector(target).setAttribute("tabindex", "0");
     document.querySelector(target).focus();
-    document.querySelectorAll(".dialog").forEach(function(val, idx) {
+    document.querySelectorAll(".dialog").forEach(function (val, idx) {
       val.addEventListener("click", dialog.handler);
     });
   },
@@ -73,7 +73,7 @@ const dialog = {
     document.querySelector("body").classList.remove("scroll-hdn");
     document.querySelector(target).classList.remove("open");
     document.querySelector(target).removeAttribute("tabindex");
-    document.querySelectorAll(".dialog").forEach(function(val, idx) {
+    document.querySelectorAll(".dialog").forEach(function (val, idx) {
       val.removeEventListener("click", dialog.handler);
     });
   },
@@ -90,7 +90,7 @@ const dialog = {
       e.querySelector("span").textContent = "전체화면으로 보기";
     }
   },
-  handler: function(e) {
+  handler: function (e) {
     if (!e.target.closest(".inner")) {
       dialog.close(dialog.target);
     }
@@ -105,7 +105,7 @@ const touchScroll = {
   init(sliderEl) {
     // sliderEl.style.cursor = "move";
     touchScroll.cursor(sliderEl);
-    $(window).resize(function() {
+    $(window).resize(function () {
       touchScroll.cursor(sliderEl);
     });
     sliderEl.addEventListener("mousedown", this.mousedownHandler.bind(this));
@@ -236,7 +236,7 @@ const scrollTab = {
       btn.addEventListener("click", this.clickHandler.bind(this));
       tabBox.append(btn);
 
-      window.addEventListener("resize", function() {
+      window.addEventListener("resize", function () {
         scrollTab.setTop();
       });
     });
@@ -260,8 +260,8 @@ const scrollTab = {
     const bodyHeight = document.body.clientHeight;
     let findIdx =
       this.topArr.findIndex(isLargeNumber) < 0 ?
-      this.topArr.length :
-      this.topArr.findIndex(isLargeNumber);
+        this.topArr.length :
+        this.topArr.findIndex(isLargeNumber);
 
     if (scrollTop < this.topArr[0]) {
       findIdx = 0;
@@ -359,24 +359,10 @@ const dropMenu = {
     }
   },
 };
-/***** [ 상단 사이트맵(전체메뉴) ] *******/
-const totalMenu = {
-  open: function() {
-    document.querySelector("#gnb").classList.add("allMenuActive", "active");
-    document.querySelector("#gnb").setAttribute("tabindex", "0");
-    document.querySelector("#gnb").focus();
-    document.querySelector(".header").classList.add("allMenuActive");
-    gnb.set();
-  },
-  close: function() {
-    document.querySelector("#gnb").classList.remove("allMenuActive", "active");
-    document.querySelector(".header").classList.remove("gnbActive");
-    document.querySelector("#gnb").removeAttribute("tabindex");
-    document.querySelector(".header").classList.remove("allMenuActive");
-  },
-};
+
+
 /***** [ 검색 보이기/안보기 ] *******/
-const searchToggle = function() {
+const searchToggle = function () {
   document.querySelector(".search-wrap").classList.toggle("close");
   const txt = document.querySelector(".search-wrap .head-group .txt");
   if (txt.textContent === "펼치기") {
@@ -386,7 +372,38 @@ const searchToggle = function() {
   }
 };
 
-document.addEventListener("DOMContentLoaded", function() {
+/***** pause button *******/
+const pauseBtn = function (el, swiper) {
+  if (!el.classList.contains("on")) {
+    swiper.autoplay.pause();
+    close(el);
+  } else {
+    swiper.autoplay.start();
+    open(el);
+  }
+
+  swiper.on('slideChangeTransitionStart', function (e) {
+    if (e.autoplay.paused) {
+      open(el);
+    } else {
+      close(el);
+    }
+  })
+
+  function open(el) {
+    el.classList.remove("on");
+    el.querySelector("i").className = "ri-pause-line";
+    el.querySelector(".blind").textContent = "일시정지";
+  }
+
+  function close(el) {
+    el.classList.add("on");
+    el.querySelector("i").className = "ri-play-fill";
+    el.querySelector(".blind").textContent = "재생";
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
   //dropMenu
   dropMenu.init();
   // tab기능 실행
@@ -397,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll("table tr.sort-tr").forEach((tr) => {
     tr.querySelectorAll("th:not(.nosrot)").forEach((th) => {
       th.classList.add("up", "down");
-      th.addEventListener("click", function(e) {
+      th.addEventListener("click", function (e) {
         e.preventDefault();
         const cell = e.currentTarget;
         if (cell.classList.contains("up") && cell.classList.contains("down")) {
@@ -416,4 +433,10 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll(".scroll-box-row").forEach((el) => {
     touchScroll.init(el);
   });
+
 });
+
+
+
+
+
