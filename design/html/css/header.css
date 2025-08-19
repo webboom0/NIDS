@@ -34,6 +34,9 @@
 .main-top.main-scroll .header:not(.gnbActive) .etcMenu a:hover i {
   color: var(--color-primary) !important;
 }
+.mode-mobile .header>.container>.etcMenu a:not(.sitemapBtn){
+  display: none;
+}
 
 .header .container {
   display: flex;
