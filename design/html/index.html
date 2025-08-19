@@ -17,10 +17,6 @@
   <script src="js/swiper.min.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/lib.js"></script>
-
-  <style>
-
-  </style>
 </head>
 
 <body>
@@ -58,6 +54,7 @@
                     <li><a href="#">센터소개_2차메뉴</a></li>
                   </ul>
                 </div>
+              </div>
             </li>
             <li class="depth-1">
               <a href="#"><span>알기쉬운 MDR</span></a>
@@ -201,12 +198,11 @@
                           </li>
                           <li>
                             <div class="step-info guide-btn">
-                              <a href="#MDR가이드 자세히보기" class="guide-btn-link"><span>MDR 가이드<br>자세히보기</span> <i
+                              <a href="#" class="guide-btn-link"><span>MDR 가이드<br>자세히보기</span> <i
                                   class="ri-arrow-right-s-line"></i></a>
                             </div>
                           </li>
                         </ol>
-
                       </div>
                       <!-- // process-group -->
                     </div>
@@ -224,7 +220,7 @@
                           더 나은 정보제공을 위해 더 노력하겠습니다.
                         </p>
                       </div>
-                    
+
                     </div>
                   </div>
                 </div>
@@ -279,7 +275,7 @@
                 <h2 class="blind">인기검색 게시물</h2>
                 <div class="serach">
                   <label for="popularity-search">인기검색</label>
-                  <select name="" id="popularity-search">
+                  <select name="popularity-search" id="popularity-search">
                     <option value="">제품검색</option>
                     <option value="">규제해설서</option>
                     <option value="">맞춤형 사례집</option>
@@ -469,15 +465,15 @@
     <!-- 최신본 컨텐츠 리스트 -->
     <div class="recentContents-wrap">
       <button type="button" class="recentContents-btn" onclick="recentContents.open()">
-       <span class="txt">최근본</span><span class="count">2</span>
+        <span class="txt">최근본</span><span class="count">2</span>
       </button>
       <div class="recentContents-list">
         <div class="tit-group">
           <h2 class="tit">최근 본 <span class="num">2</span></h2>
           <div class="btn-group">
             <button type="button" class="allDel-btn"><span>전체삭제</span></button>
-            <button type="button" class="close-btn" onclick="recentContents.close()"><span class="blind">최신글 리스트 창 닫기</span><i
-                class="ri-close-line"></i></button>
+            <button type="button" class="close-btn" onclick="recentContents.close()"><span class="blind">최신글 리스트 창
+                닫기</span><i class="ri-close-line"></i></button>
           </div>
         </div>
         <ul class="list">
@@ -661,17 +657,6 @@
         el: ".banner-pagination",
       },
     });
-
-    // 로컬 스토리지에서 팝업 정보를 가져옴
-    function cookieCheck(e) {
-      if (e.checked === true) {
-        // 동의시 로컬 스토리지에 저장
-        localStorage.setItem("popupClose", true);
-      } else {
-        localStorage.removeItem("popupClose");
-      }
-    }
-
   </script>
 </body>
 

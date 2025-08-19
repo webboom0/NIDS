@@ -131,7 +131,7 @@ header.gnbActive:not(.allMenuActive)::after {
   content: "";
   width: var(--gnb-slogan-width);
   min-height: 140px;
-  background: url(../images/gnb_slogan.svg) no-repeat center center ;
+  background: url(../images/gnb_slogan.svg) no-repeat center center;
   flex-shrink: 0;
 }
 

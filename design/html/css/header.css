@@ -13,9 +13,11 @@
   height: var(--height);
   --height: 100px;
 }
-.mode-mobile .header{
+
+.mode-mobile .header {
   height: 80px;
 }
+
 .header.gnbActive,
 .header.allMenuActive {
   background: #fff;
@@ -40,7 +42,7 @@
   height: 100%;
   width: 100%;
   margin: 0;
-  padding:0 2rem;
+  padding: 0 2rem;
   max-width: none;
 }
 
@@ -65,12 +67,10 @@
   background-image: url(../images/logo_wh.svg ) !important;
 }
 
-
 .header .etcMenu>* {
   display: block;
   padding: .5rem 1rem;
   font-size: .9em;
-  
 }
 
 .main-top.main-scroll .header:not(.gnbActive) .etcMenu {

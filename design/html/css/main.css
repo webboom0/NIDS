@@ -577,9 +577,11 @@ body.hdn-scroll {
   align-items: center;
   justify-content: center;
 }
-.achive-group .link-group a:hover i{
+
+.achive-group .link-group a:hover i {
   animation: shake 0.5s ease-in-out;
 }
+
 .achive-group .link-group i {
   line-height: 0;
 }
