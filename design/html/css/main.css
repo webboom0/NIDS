@@ -111,7 +111,11 @@ body.hdn-scroll {
     padding-top: 150px;
     padding-bottom: 50px;
   }
-
+  @media (max-width: 1400px) {
+    .section-swiper .section {
+      padding-top: 50px;
+    }
+  }
   .section,
   .section-swiper.section {
     padding-top: 0;
