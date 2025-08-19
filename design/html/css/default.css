@@ -290,6 +290,12 @@ input[type="checkbox"]:focus+label {
   padding: 0.5rem 0.7rem;
   border-radius: 0.5rem;
   color: #6B6B6B;
+  transition: all .3s;
+}
+
+.recentContents-list .tit-group .allDel-btn:hover {
+  background-color: var(--color-primary);
+  color: #fff;
 }
 
 .recentContents-list .tit-group .close-btn {
