@@ -10,7 +10,7 @@
   color: #333;
 }
 
-.main-scroll .footer.fixed {
+.footer.fixed {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -112,6 +112,7 @@
   }
 
   .footer-top .link-group {
+    gap: 5px;
     padding-bottom: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
