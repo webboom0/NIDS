@@ -676,6 +676,7 @@ body.hdn-scroll {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.6rem;
+  word-break: break-word;
 }
 
 .popularity-group .popularity-list a {
