@@ -10,7 +10,7 @@
   color: #333;
 }
 
-.footer.fixed {
+.main-scroll .footer.fixed {
   position: fixed;
   bottom: 0;
   left: 0;

@@ -403,6 +403,16 @@ const pauseBtn = function (el, swiper) {
   }
 };
 
+ // 최근본 컨텐츠 리스트
+ const recentContents = {
+  open: function () {
+    document.querySelector('.recentContents-list').classList.add('active');
+  },
+  close: function () {
+    document.querySelector('.recentContents-list').classList.remove('active');
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   //dropMenu
   dropMenu.init();

@@ -134,7 +134,7 @@
     <div class="swiper section-swiper" id="contents">
       <div class="swiper-wrapper">
         <!-- section-1 -->
-        <section class="swiper-slide section">
+        <section class="swiper-slide ">
           <h2 class="blind">슬라이드 섹션</h2>
           <!-- 상단 슬라이드 -->
           <div class="visual-section">
@@ -443,10 +443,10 @@
             <a href="#">찾아오시는길</a>
           </div>
           <div class="sns">
-            <a href="#" class="sns-btn" target="_blank" rel="noopener noreferrer" title="새창으로열림"><i class="ri-instagram-line"></i><span
-                class="blind">인스타그램</span></a>
-            <a href="#" class="sns-btn" target="_blank" rel="noopener noreferrer" title="새창으로열림"><i class="ri-youtube-line"></i><span
-                class="blind">유튜브</span></a>
+            <a href="#" class="sns-btn" target="_blank" rel="noopener noreferrer" title="새창으로열림"><i
+                class="ri-instagram-line"></i><span class="blind">인스타그램</span></a>
+            <a href="#" class="sns-btn" target="_blank" rel="noopener noreferrer" title="새창으로열림"><i
+                class="ri-youtube-line"></i><span class="blind">유튜브</span></a>
           </div>
         </div>
         <div class="footer-bottom">
@@ -472,7 +472,8 @@
           <h2 class="tit">최근 본 <span class="num">2</span></h2>
           <div class="btn-group">
             <button type="button" class="allDel-btn"><span>전체삭제</span></button>
-            <button type="button" class="close-btn rotation" onclick="recentContents.close()"><span class="blind">최신글 리스트 창
+            <button type="button" class="close-btn rotation" onclick="recentContents.close()"><span class="blind">최신글
+                리스트 창
                 닫기</span><i class="ri-close-line"></i></button>
           </div>
         </div>
@@ -487,7 +488,8 @@
                 <span class="date">2025.05.05</span>
               </div>
             </a>
-            <button type="button" class="del-btn"><span class="blind">삭제</span><i class="ri-close-line rotation"></i></button>
+            <button type="button" class="del-btn"><span class="blind">삭제</span><i
+                class="ri-close-line rotation"></i></button>
           </li>
           <li>
             <a href="#">
@@ -499,28 +501,22 @@
                 <span class="date">2025.05.05</span>
               </div>
             </a>
-            <button type="button" class="del-btn"><span class="blind">삭제</span><i class="ri-close-line rotation"></i></button>
+            <button type="button" class="del-btn"><span class="blind">삭제</span><i
+                class="ri-close-line rotation"></i></button>
           </li>
         </ul>
-
       </div>
     </div>
     <!-- // 최신본 컨텐츠 리스트 -->
+
+    <!--  상단 이동 버튼 -->
+    <button type="button" class="topBtn" onclick="moveTop()"><i class="ri-contract-left-line"></i>TOP<span
+        class="blind">상단으로 이동</span></button>
   </div>
   <!-- // wrap -->
 
 
   <script>
-    // 최근본 컨텐츠 리스트
-    const recentContents = {
-      open: function () {
-        document.querySelector('.recentContents-list').classList.add('active');
-      },
-      close: function () {
-        document.querySelector('.recentContents-list').classList.remove('active');
-      }
-    }
-
     document.addEventListener('DOMContentLoaded', function () {
       let sectionSwiper;
 
@@ -534,7 +530,6 @@
         const footerFixed = document.querySelector(".footer.fixed");
 
         if (window.matchMedia("screen and (max-height: 900px)").matches || window.matchMedia("screen and (max-width: 1420px)").matches) {
-          console.log("############")
           sectionSwiperElement.classList.remove("swiper");
           sectionSwiperElement.children[0].classList.remove("swiper-wrapper");
           Array.from(sectionSwiperElement.children[0].children).forEach(child => child.classList.remove("swiper-slide"));
@@ -554,41 +549,42 @@
           body.classList.add("hdn-scroll");
           wrap.classList.add("main-scroll");
           sectionSwiperElement.classList.remove("fix");
-          if (!sectionSwiperCheck()) {
-            sectionSwiperElement.classList.add("swiper");
-            sectionSwiperElement.children[0].classList.add("swiper-wrapper");
-            Array.from(sectionSwiperElement.children[0].children).forEach(child => child.classList.add("swiper-slide"));
-            sectionSwiper = new Swiper(".section-swiper", {
-              direction: "vertical",
-              slidesPerView: 1,
-              spaceBetween: 0,
-              pagination: {
-                el: ".sectionSwiper-pagination",
+          if (sectionSwiper) {
+            sectionSwiper.destroy(true, true);
+          }
+          sectionSwiperElement.classList.add("swiper");
+          sectionSwiperElement.children[0].classList.add("swiper-wrapper");
+          Array.from(sectionSwiperElement.children[0].children).forEach(child => child.classList.add("swiper-slide"));
+          sectionSwiper = new Swiper(".section-swiper", {
+            direction: "vertical",
+            slidesPerView: 1,
+            spaceBetween: 0,
+            pagination: {
+              el: ".sectionSwiper-pagination",
+            },
+            mousewheel: true,
+            allowTouchMove: false,
+            speed: 1000,
+            on: {
+              slideChangeTransitionStart: function (e) {
+                if (e.activeIndex == 0) {
+                  wrap.classList.add("main-top");
+                } else {
+                  wrap.classList.remove("main-top");
+                }
+                if (e.activeIndex < e.slides.length - 1) {
+                  footer.classList.remove("fixed");
+                }
               },
-              mousewheel: true,
-              allowTouchMove: false,
-              speed: 1000,
-              on: {
-                slideChangeTransitionStart: function (e) {
-                  if (e.activeIndex == 0) {
-                    wrap.classList.add("main-top");
-                  } else {
-                    wrap.classList.remove("main-top");
-                  }
-                  if (e.activeIndex < e.slides.length - 1) {
-                    footer.classList.remove("fixed");
-                  }
-                },
-                slideChangeTransitionEnd: function (e) {
-                  if (e.activeIndex == e.slides.length - 1) {
-                    footer.classList.add("fixed");
-                  } else {
-                    footer.classList.remove("fixed");
-                  }
+              slideChangeTransitionEnd: function (e) {
+                if (e.activeIndex == e.slides.length - 1) {
+                  footer.classList.add("fixed");
+                } else {
+                  footer.classList.remove("fixed");
                 }
               }
-            });
-          }
+            }
+          });
         }
       }
 

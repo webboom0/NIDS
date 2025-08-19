@@ -177,8 +177,8 @@ input[type="checkbox"]:focus+label {
 /* 최근본 컨텐츠 리스트 버튼 */
 .recentContents-btn {
   position: fixed;
-  bottom: 5rem;
-  right: 5rem;
+  bottom: 10rem;
+  right: 2rem;
   z-index: 10;
   width: 6.2rem;
   height: 6.2rem;
@@ -193,6 +193,11 @@ input[type="checkbox"]:focus+label {
   color: var(--color-primary);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+.main-scroll .recentContents-btn{
+  bottom: 5rem;
+  right: 5rem;
+}
+
 
 .recentContents-btn::before {
   content: "";
@@ -373,6 +378,43 @@ input[type="checkbox"]:focus+label {
   object-fit: cover;
 }
 
+
+.main-scroll .topBtn {
+  display: none;
+}
+
+/* topBtn */
+.topBtn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 10;
+  width: 6.2rem;
+  height: 6.2rem;
+  border-radius: 1.8rem;
+  background-color: #fff;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.topBtn:hover {
+  transform: translateY(-1rem);
+}
+
+.topBtn i {
+  font-size: 2em;
+  display: block;
+  transform: rotate(90deg);
+  transition: all .3s ease-out 0s;
+}
+
+
 /* rotation */
 .rotation:hover {
   animation: rotation 1s linear 1;
@@ -383,6 +425,7 @@ input[type="checkbox"]:focus+label {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

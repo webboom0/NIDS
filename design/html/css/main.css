@@ -64,6 +64,10 @@ body.hdn-scroll {
   position: relative;
 }
 
+.sectionSwiper-pagination {
+  display: none;
+}
+
 .main-scroll .section-swiper .sectionSwiper-pagination {
   position: fixed;
   top: 50%;
@@ -99,7 +103,7 @@ body.hdn-scroll {
 }
 
 @media (min-height:890px) {
-  .section-swiper.fix .section {
+  .section-swiper .section {
     /* height: 100vh; */
     display: flex;
     align-items: center;
@@ -109,7 +113,7 @@ body.hdn-scroll {
   }
 
   .section,
-  .section-swiper.fix .section {
+  .section-swiper.section {
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -119,6 +123,7 @@ body.hdn-scroll {
 .visual-section {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 .visual-section>* {
@@ -130,6 +135,7 @@ body.hdn-scroll {
   display: flex;
   align-items: center;
   height: auto;
+  min-height: 780px;
 }
 
 .visual-section .control-group {
@@ -429,8 +435,12 @@ body.hdn-scroll {
 }
 
 @media (max-width: 1440px) {
+  .visual-section .swiper-slide{
+    min-height: auto;
+  }
+  
   .visual-section .visual-control-group {
-    bottom: 5rem;
+    bottom: 7rem;
   }
 
   .visual-section .step-info-group {
@@ -453,9 +463,7 @@ body.hdn-scroll {
   .visual-section .process-group .step-list li::before {
     transform: translateY(-50%) translateX(50%);
   }
-}
 
-@media (max-width: 900px) {
   .visual-section .step-info-group .title {
     font-size: 16px;
     padding-top: 2rem;
@@ -470,7 +478,9 @@ body.hdn-scroll {
   .visual-section .step-info-group .title .tit {
     font-size: 1.7em;
   }
+}
 
+@media (max-width: 900px) {
   .visual-section .step-info-group .process-group {
     transform: none;
   }
