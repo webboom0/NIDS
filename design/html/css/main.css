@@ -526,10 +526,11 @@ body.hdn-scroll {
 
   .visual-section .process-group .step-list li .step-info {
     width: 100%;
+    height: 9rem;
   }
 
   .visual-section .process-group .step-list li .step-num {
-    font-size: 1em;
+    font-size: .9em;
   }
 
   .visual-section .process-group .step-list>* {
@@ -651,6 +652,16 @@ body.hdn-scroll {
 
   .achive-group .desc {
     display: none;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .achive-group{
+    flex-direction: column;
+    gap: 0;
+  }
+  .achive-group .link-group a{
+    padding: 1.2rem 0;
   }
 }
 
