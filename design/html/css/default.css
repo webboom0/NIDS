@@ -373,6 +373,21 @@ input[type="checkbox"]:focus+label {
   object-fit: cover;
 }
 
+/* rotation */
+.rotation:hover {
+  animation: rotation 1s linear 1;
+  transform-origin: center;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* width */
 .w100 {
   width: 100% !important;
