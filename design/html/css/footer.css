@@ -124,6 +124,7 @@
     padding: 1rem;
     border-radius: .5rem;
     justify-content: center;
+    background-color: #fff;
   }
 
   .footer-top .link-group a::before{
