@@ -3,6 +3,7 @@
 @import url(header.css);
 @import url(footer.css);
 @import url(nav.css);
+@import url(components/components.css);
 
 :root {
   /* Primary Colors */
@@ -170,6 +171,10 @@ input[type="checkbox"]:focus+label {
   .header .top .container {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .mbl-none {
+    display: none !important;
   }
 }
 
@@ -450,6 +455,10 @@ input[type="checkbox"]:focus+label {
 
 .w20 {
   width: 20% !important;
+}
+
+.wAuto {
+  width: auto !important;
 }
 
 @media (max-width: 780px) {
@@ -790,11 +799,20 @@ input[type="checkbox"]:focus+label {
 }
 
 .bord-box.whBlue {
-  background-color: rgba(47, 106, 255, 0.02) !important;
+  background-color: #f8fdff !important;
+  border: solid 1px #cfe5ed;
 }
 
 .box-shadow {
   box-shadow: 0 4px 10px rgba(100, 100, 100, 0.1);
+}
+
+.bord-top {
+  border-top: solid 1px var(--color-border) !important;
+}
+
+*[class*=bord].dashed {
+  border-style: dashed !important;
 }
 
 .desc-box {
@@ -962,8 +980,8 @@ input[type="checkbox"]:focus+label {
   margin-top: 4rem !important;
 }
 
-.mt4 {
-  margin-top: 4rem !important;
+.mt5 {
+  margin-top: 5rem !important;
 }
 
 /* font-weight */
@@ -1014,7 +1032,7 @@ ul.b-list.disc>li::before,
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: var(--color-primary);
   margin-right: 0.5rem;
   position: absolute;
   left: 0;
@@ -1485,6 +1503,7 @@ body *::-webkit-scrollbar-track {
 .form-list input[type=file],
 select {
   width: 100%;
+  box-sizing: border-box;
 }
 
 .form-list .sub-label {
@@ -1561,7 +1580,6 @@ select {
   border: solid 1px var(--color-border);
   border-radius: .4rem;
   padding: 1rem;
-  font-size: 1.4rem;
 }
 
 select {
@@ -1569,9 +1587,10 @@ select {
   appearance: none;
   background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
   background-repeat: no-repeat;
-  background-position: right 16px center;
+  background-position: right 10px center;
   background-size: 16px 16px;
   cursor: pointer;
+  padding-right: 30px;
 }
 
 @media (max-width:780px) {

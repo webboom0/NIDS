@@ -403,6 +403,13 @@ const pauseBtn = function (el, swiper) {
   }
 };
 
+function shareToggle(el) {
+  el.parentNode.classList.toggle("active");
+  el.classList.toggle("toggle");
+  const titleArr = ["열기","닫기"];
+  el.setAttribute("title", titleArr[toggleEl.classList.contains("toggle") ? 1 : 0]);
+}
+
  // 최근본 컨텐츠 리스트
  const recentContents = {
   open: function () {
@@ -443,6 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll(".scroll-box-row").forEach((el) => {
     touchScroll.init(el);
   });
+
 
 });
 
